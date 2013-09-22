@@ -4,7 +4,7 @@ flask-openid
 flask-mail
 sqlalchemy
 flask-sqlalchemy
-sqlalchemy-migrate
+alembic
 flask-whooshalchemy==0.55a
 flask-wtf
 pytz==2013b
