@@ -6,3 +6,4 @@
 *.db
 flask/
 .settings/
+tmp/
