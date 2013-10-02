@@ -6,4 +6,5 @@
 *.db
 flask/
 .settings/
+.idea/
 tmp/

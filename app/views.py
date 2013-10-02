@@ -7,7 +7,7 @@ from flask.ext.login import current_user, login_user, login_required, \
 
 from app import app, db, lm, oid
 from app.forms import EditForm, LoginForm
-from app.models import User, ROLE_ADMIN, ROLE_USER
+from app.models import User, ROLE_USER
 
 
 @app.before_request
@@ -40,9 +40,9 @@ def index():
         },
     ]
     return render_template('index.html',
-        title='Home',
-        user=user,
-        posts=posts)
+                           title='Home',
+                           user=user,
+                           posts=posts)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -55,9 +55,9 @@ def login():
         session['remember_me'] = form.remember_me.data
         return oid.try_login(form.openid.data, ask_for=['nickname', 'email'])
     return render_template('login.html',
-        title='Sign In',
-        form=form,
-        providers=app.config['OPENID_PROVIDERS'])
+                           title='Sign In',
+                           form=form,
+                           providers=app.config['OPENID_PROVIDERS'])
 
 
 @oid.after_login
@@ -99,8 +99,8 @@ def user(nickname):
         {'author': user, 'body': 'Test post #2'},
     ]
     return render_template('user.html',
-        user=user,
-        posts=posts)
+                           user=user,
+                           posts=posts)
 
 
 @app.route('/edit', methods=['GET', 'POST'])
@@ -118,4 +118,4 @@ def edit():
         form.nickname.data = g.user.nickname
         form.about_me.data = g.user.about_me
     return render_template('edit.html',
-        form=form)
+                           form=form)
